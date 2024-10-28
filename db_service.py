@@ -58,7 +58,7 @@ def read_by_room(room_id):
 
 def get_room_type(room_id):
     """Fetch the room type from the room microservice."""
-    room_service_url = f"http://ka-rooms:5000/rooms/{room_id}"  # Adjust this URL as needed
+    room_service_url = f"http://localhost:5001/rooms/{room_id}"  # Adjust this URL as needed
     try:
         response = requests.get(room_service_url)
         response.raise_for_status()
