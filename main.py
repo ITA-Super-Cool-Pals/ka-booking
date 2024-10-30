@@ -38,7 +38,7 @@ def create_booking():
         return jsonify({"message": "Booking created", "bookingId": booking_id}), 201
     except sqlite3.Error as e:
         print(f"Database error: {e}")
-        return jsonify({"error": "Failed to create booking"}), 500
+        return jsonify({e: "Failed to create booking"}), 500
     
 @app.route('/bookings')
 def show_all():
