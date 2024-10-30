@@ -41,12 +41,12 @@ def create_booking():
         return jsonify({e: "Failed to create booking"}), 500
     
 # get all bookings
-@app.route('/bookings')
+@app.route('/bookings', methods=['GET'])
 def show_all():
     return jsonify(db_service.read_all())
 
 # get all bookings with specific room_id
-@app.route('/bookings/<int:room_id>')
+@app.route('/bookings/<int:room_id>', methods=['GET'])
 def get_by_room_id(room_id):
     return jsonify(db_service.read_by_room(room_id))    
 
