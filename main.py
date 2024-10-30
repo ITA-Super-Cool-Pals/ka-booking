@@ -43,12 +43,23 @@ def create_booking():
 # get all bookings
 @app.route('/bookings', methods=['GET'])
 def show_all():
-    return jsonify(db_service.read_all())
+    try:
+        bookings = db_service.read_all()
+        if bookings:
+            return jsonify(bookings), 200
+        else:
+            return jsonify(message="No guests found"), 404
+    except Exception as e:
+        return jsonify(message="Connection Error"), 500
 
 # get all bookings with specific room_id
 @app.route('/bookings/<int:room_id>', methods=['GET'])
 def get_by_room_id(room_id):
-    return jsonify(db_service.read_by_room(room_id))    
+     bookings = db_service.read_by_room(room_id)
+    if bookings:
+        return jsonify(bookings), 200
+    else:
+        return jsonify(message="Guest not found"), 404  
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
