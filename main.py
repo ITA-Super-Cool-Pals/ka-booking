@@ -48,7 +48,7 @@ def show_all():
         if bookings:
             return jsonify(bookings), 200
         else:
-            return jsonify(message="No guests found"), 404
+            return jsonify(message="No bookins found"), 404
     except Exception as e:
         return jsonify(message="Connection Error"), 500
 
@@ -59,7 +59,7 @@ def get_by_room_id(room_id):
     if bookings:
         return jsonify(bookings), 200
     else:
-        return jsonify(message="Guest not found"), 404  
+        return jsonify(message="booking not found"), 404  
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
