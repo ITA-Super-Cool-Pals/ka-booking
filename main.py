@@ -39,7 +39,7 @@ def create_booking():
     except sqlite3.Error as e:
         print(f"Database error: {e}")
         return jsonify({e: "Failed to create booking"}), 500
-    
+
 # get all bookings
 @app.route('/bookings', methods=['GET'])
 def show_all():
@@ -55,11 +55,11 @@ def show_all():
 # get all bookings with specific room_id
 @app.route('/bookings/<int:room_id>', methods=['GET'])
 def get_by_room_id(room_id):
-     bookings = db_service.read_by_room(room_id)
+    bookings = db_service.read_by_room(room_id)
     if bookings:
         return jsonify(bookings), 200
     else:
-        return jsonify(message="booking not found"), 404  
+        return jsonify(message="booking not found"), 404
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0')
